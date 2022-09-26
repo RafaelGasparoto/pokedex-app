@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,10 +24,13 @@ import { InternalBoxComponent } from './components/internal-box/internal-box.com
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatGridListModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
