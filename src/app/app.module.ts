@@ -13,6 +13,10 @@ import { MatListModule } from '@angular/material/list'
 import { BodyComponent } from './components/views/body/body.component';
 import { InternalBoxComponent } from './components/internal-box/internal-box.component';
 import { MatTableModule } from '@angular/material/table'
+import {MatCardModule} from '@angular/material/card'
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +34,9 @@ import { MatTableModule } from '@angular/material/table'
     MatGridListModule,
     MatListModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

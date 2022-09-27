@@ -1,7 +1,7 @@
 import { Pokemon } from './../../../../node_modules/pokenode-ts/dist/index.d';
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, EMPTY, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Objeto } from './objeto.model';
 import { MatSnackBar } from '@angular/material/snack-bar'
 
@@ -10,13 +10,16 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 })
 export class ObjetoService {
   private pokemons: Pokemon[] = [];
+
   listaPokemon: Objeto = {
     count: 0,
     next: '',
     previous: '',
     results: []
   }
+
   urlBase = 'https://pokeapi.co/api/v2/pokemon'
+  
   constructor(private http: HttpClient, private snackbar: MatSnackBar) {
     this.pokemonList().subscribe(ob => {
       this.listaPokemon = ob
@@ -30,12 +33,22 @@ export class ObjetoService {
     })
   }
 
+  OnInit(){
+
+  }
+  
   pokemonList(): Observable<Objeto> {
     const url = `${this.urlBase}?limit=10&offset=5`
 
     return this.http.get<Objeto>(url).pipe(
       map((obj) => obj),
     )
+  }
+  
+  getPokemons(pokemon: string): Observable<Pokemon> {
+    const url = `${this.urlBase}/${pokemon}`
+    return this.http.get<Pokemon>(url).pipe(
+      map((obj) => obj),)
   }
 
   get Data(): Pokemon[]{
@@ -53,9 +66,5 @@ export class ObjetoService {
   //   })
   // }
 
-  getPokemons(pokemon: string): Observable<Pokemon> {
-    const url = `${this.urlBase}/${pokemon}`
-    return this.http.get<Pokemon>(url).pipe(
-      map((obj) => obj),)
-  }
+ 
 }
