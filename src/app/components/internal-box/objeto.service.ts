@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar'
   providedIn: 'root'
 })
 export class ObjetoService {
-  pokemons: Pokemon[] = [];
+  private pokemons: Pokemon[] = [];
   listaPokemon: Objeto = {
     count: 0,
     next: '',
@@ -17,21 +17,30 @@ export class ObjetoService {
     results: []
   }
   urlBase = 'https://pokeapi.co/api/v2/pokemon'
-  constructor(private http: HttpClient, private snackbar: MatSnackBar) { 
+  constructor(private http: HttpClient, private snackbar: MatSnackBar) {
     this.pokemonList().subscribe(ob => {
       this.listaPokemon = ob
+    }).add(() => {
+      this.listaPokemon.results.forEach(poke => {
+        this.getPokemons(poke['name']).subscribe(ob => {
+          this.pokemons.push(ob)
+        })
+      })
+      console.log(this.pokemons)
     })
   }
 
   pokemonList(): Observable<Objeto> {
-    const url = `${this.urlBase}?limit=10&offset=5` 
-    
+    const url = `${this.urlBase}?limit=10&offset=5`
+
     return this.http.get<Objeto>(url).pipe(
       map((obj) => obj),
-      )
+    )
   }
-  
 
+  get Data(): Pokemon[]{
+    return this.pokemons
+  }
   // pokemonResults(): void {
   //   this.pokemonList().subscribe(objeto=>{
   //     objeto.results.forEach((pokemon)=>{
@@ -43,21 +52,8 @@ export class ObjetoService {
   //     })
   //   })
   // }
-  teste(): void{
-this.data()
-  }
-  data(): Pokemon[]{
-    this.listaPokemon.results.forEach(poke => {
-      this.getPokemons(poke['name']).subscribe(ob => { 
-        this.pokemons.push(ob)
-      })
-    })
-    
-    this.pokemons.forEach(poke => {console.log(poke.name)})
-    return this.pokemons
-  }
 
-  getPokemons(pokemon: string): Observable<Pokemon>{
+  getPokemons(pokemon: string): Observable<Pokemon> {
     const url = `${this.urlBase}/${pokemon}`
     return this.http.get<Pokemon>(url).pipe(
       map((obj) => obj),)
