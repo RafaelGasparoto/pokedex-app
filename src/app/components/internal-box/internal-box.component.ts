@@ -14,14 +14,14 @@ export class InternalBoxComponent implements OnInit {
   displayedColumns = ['name']
   
   constructor(private service: ObjetoService) { 
+    this.pokemons = this.service.Data
+
   }
 
   ngOnInit(): void {
   }
 
-  teste(): void{
-    this.pokemons = this.service.Data
-  }
+
 
   add(): void{
     this.service.getDados()
