@@ -15,6 +15,7 @@ import { InternalBoxComponent } from './components/internal-box/internal-box.com
 import { MatTableModule } from '@angular/material/table'
 import {MatCardModule} from '@angular/material/card'
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatFormFieldModule } from '@angular/material/form-field'
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatSnackBarModule,
     MatTableModule,
     MatCardModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
