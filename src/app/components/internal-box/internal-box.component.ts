@@ -12,7 +12,6 @@ export class InternalBoxComponent implements OnInit {
   pokemons!: Pokemon[]
   displayedColumns = ['name']
   constructor(private service: ObjetoService) { 
-    
   }
 
   ngOnInit(): void {
@@ -21,5 +20,4 @@ export class InternalBoxComponent implements OnInit {
   teste(): void{
     this.pokemons = this.service.Data
   }
-
 }
