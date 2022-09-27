@@ -13,7 +13,7 @@ export class ObjetoService {
 
   listaPokemon: Objeto = {
     count: 0,
-    next: '',
+    next: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10',
     previous: '',
     results: []
   }
@@ -21,24 +21,29 @@ export class ObjetoService {
   urlBase = 'https://pokeapi.co/api/v2/pokemon'
   
   constructor(private http: HttpClient, private snackbar: MatSnackBar) {
+    this.getDados()
+  }
+
+  OnInit(){
+
+  }
+
+  getDados(){
     this.pokemonList().subscribe(ob => {
       this.listaPokemon = ob
     }).add(() => {
       this.listaPokemon.results.forEach(poke => {
         this.getPokemons(poke['name']).subscribe(ob => {
           this.pokemons.push(ob)
+          this.pokemons.sort((a, b) => a.id-b.id)
+
         })
       })
-      console.log(this.pokemons)
     })
   }
 
-  OnInit(){
-
-  }
-  
   pokemonList(): Observable<Objeto> {
-    const url = `${this.urlBase}?limit=10&offset=5`
+    const url = this.listaPokemon.next
 
     return this.http.get<Objeto>(url).pipe(
       map((obj) => obj),
@@ -54,17 +59,5 @@ export class ObjetoService {
   get Data(): Pokemon[]{
     return this.pokemons
   }
-  // pokemonResults(): void {
-  //   this.pokemonList().subscribe(objeto=>{
-  //     objeto.results.forEach((pokemon)=>{
-  //       this.getPokemons(pokemon['name']).forEach((poke)=>{
-  //         this.poke = poke
-  //         this.pokemon.unshift(poke)
-  //         console.log(this.pokemon)
-  //       })
-  //     })
-  //   })
-  // }
-
  
 }
