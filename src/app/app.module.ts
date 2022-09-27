@@ -12,7 +12,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list'
 import { BodyComponent } from './components/views/body/body.component';
 import { InternalBoxComponent } from './components/internal-box/internal-box.component';
-
+import { MatTableModule } from '@angular/material/table'
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { InternalBoxComponent } from './components/internal-box/internal-box.com
     MatGridListModule,
     MatListModule,
     MatSnackBarModule,
-  
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

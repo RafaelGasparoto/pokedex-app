@@ -1,24 +1,31 @@
+import { Pokemon } from './../../../../node_modules/pokenode-ts/dist/index.d';
 import { ObjetoService } from './objeto.service';
 import { Component, OnInit } from '@angular/core';
-import { Objeto } from './objeto.model';
+
 @Component({
   selector: 'app-internal-box',
   templateUrl: './internal-box.component.html',
   styleUrls: ['./internal-box.component.css']
 })
 export class InternalBoxComponent implements OnInit {
-  objetos!: Objeto[]
+  pokemons!: Pokemon[]
+  pokemon!: Pokemon
+  sd!: string[]
+  displayedColumns = ['name']
   constructor(private service: ObjetoService) { }
 
   ngOnInit(): void {
+    this.service.pokemonList().subscribe(poke => {
+      poke.results.forEach(pokemon => {
+        this.service.getPokemons(pokemon['name']).forEach(poke=>{
+          
+        })
+      })
+    })
   }
 
-  read(): void {
-    this.service.read().subscribe(objeto =>{
-      this.objetos[0].id = objeto.id
-      this.objetos[0].name = objeto.name
-    })
-    console.log('dsasda')
+  teste(): void {
+    this.service.teste()
   }
 
 }

@@ -1,3 +1,4 @@
 td {
+  display: flex;
   border: 1px solid #ff0000; 
 }

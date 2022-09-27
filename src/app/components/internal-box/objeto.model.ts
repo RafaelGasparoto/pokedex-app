@@ -1,4 +1,6 @@
 export interface Objeto {
-  id: number
-  name: string
+  count: number,
+  next: string,
+  previous: string;
+  results: Array<any>
 }
