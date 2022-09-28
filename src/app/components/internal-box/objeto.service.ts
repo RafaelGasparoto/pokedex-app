@@ -13,7 +13,7 @@ export class ObjetoService {
 
   listaPokemon: Objeto = {
     count: 0,
-    next: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10',
+    next: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=12',
     previous: '',
     results: []
   }

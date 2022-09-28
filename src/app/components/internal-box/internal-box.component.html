@@ -1,21 +1,26 @@
-
-<div class="content">
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let num of pokemons">
+<div class="content" style="margin-top: 90px;">
+  <div fxLayout="row wrap" fxLayoutGap="10px grid">
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let pokemon of pokemons">
       <mat-card  class="mat-elevation-z4" >
         <mat-card-header>
-          <mat-card-title>{{num.name}}</mat-card-title>
+          <mat-card-title>{{pokemon.name}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="{{num.sprites.front_default}}">
+        <img mat-card-image src="{{pokemon.sprites.front_default}}">
         <mat-card-content>
-          <p *ngFor="let type of num.types" style="display: inline;">
-            {{type.type.name}}
-          </p>
+          <div style="text-align: center;">
+            <p style="text-align: left;">
+                N°{{pokemon.id}}
+            </p>
+            <div style="display: flex;">
+              <span  class="type-name" *ngFor="let type of pokemon.types" [ngStyle]="{backgroundColor: getColor(type.type.name)}" >{{type.type.name}}</span>
+            </div>
+            
+          </div>
         </mat-card-content>
-        <mat-card-actions>
+        <!-- <mat-card-actions>
           <button mat-button>LIKE</button>
           <button mat-button>SHARE</button>
-        </mat-card-actions>
+        </mat-card-actions> -->
       </mat-card>
     </div>
   </div>

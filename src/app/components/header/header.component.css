@@ -1,0 +1,17 @@
+.logo {
+  width: 150px;
+  height: 80px;
+  align-self: center;
+}
+
+.row-toolbar{
+  justify-content: center;
+  position: fixed; /* Set the navbar to fixed position */
+  margin-top: 20px;
+}
+
+.header {  
+  position: fixed;
+  z-index:999;
+  height: 100px;
+}
