@@ -9,7 +9,7 @@ const routes: Routes = [
     component: InternalBoxComponent
   },
   {
-    path: "pokemon",
+    path: "pokemon/:id",
     component: PokemonComponent
   }
 ];

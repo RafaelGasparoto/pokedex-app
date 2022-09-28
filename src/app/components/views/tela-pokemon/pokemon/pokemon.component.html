@@ -1,8 +1,28 @@
 <div class="content" style="margin-top: 130px;"> 
-  <div fxLayout="row wrap" fxLayoutGap="10px grid">
-    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" >
-    </div>
-  </div>
+ 
+      <mat-card  class="mat-elevation-z4" >
+        <mat-card-header>
+          <mat-card-title>{{pokemon.name}}</mat-card-title>
+        </mat-card-header>
+      
+          <img mat-card-image src="{{pokemon.sprites.front_default}}">
+        <mat-card-content>
+          <div style="text-align: center;">
+            <p style="text-align: left;">
+                N°{{pokemon.id}}
+            </p>
+            <div style="display: flex;">
+              <span class="type-name" *ngFor="let type of pokemon.types" [ngStyle]="" >{{type.type.name}}</span>
+            </div>
+            
+          </div>
+        </mat-card-content>
+        <!-- <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions> -->
+      </mat-card>
+  
   <div style="text-align:center; margin: 50px;">
     <button mat-raised-button color="primary">Carregar mais Pokémons</button>
   </div>

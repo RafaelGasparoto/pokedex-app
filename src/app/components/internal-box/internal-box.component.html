@@ -5,7 +5,7 @@
         <mat-card-header>
           <mat-card-title>{{pokemon.name}}</mat-card-title>
         </mat-card-header>
-        <a routerLink="pokemon">
+        <a routerLink="pokemon/{{pokemon.id}}">
           <img mat-card-image src="{{pokemon.sprites.front_default}}">
         </a>
         <mat-card-content>

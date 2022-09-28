@@ -22,10 +22,10 @@ export class ObjetoService {
   
   constructor(private http: HttpClient, private snackbar: MatSnackBar) {
     this.getDados()
+
   }
 
-  OnInit(){
-
+  ngOnInit(){
   }
 
   getDados(){
@@ -48,6 +48,11 @@ export class ObjetoService {
     return this.http.get<Objeto>(url).pipe(
       map((obj) => obj),
     )
+  }
+
+  readById(id: string): Observable<Pokemon>{
+    const url = `${this.urlBase}/${id}`
+    return this.http.get<Pokemon>(url)
   }
   
   getPokemons(pokemon: string): Observable<Pokemon> {
