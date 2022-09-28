@@ -13,11 +13,11 @@ import { MatListModule } from '@angular/material/list'
 import { BodyComponent } from './components/views/body/body.component';
 import { InternalBoxComponent } from './components/internal-box/internal-box.component';
 import { MatTableModule } from '@angular/material/table'
-import {MatCardModule} from '@angular/material/card'
+import { MatCardModule } from '@angular/material/card'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
+import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatButtonModule } from '@angular/material/button';
 import { PokemonComponent } from './components/views/tela-pokemon/pokemon/pokemon.component';
 
@@ -29,6 +29,7 @@ import { PokemonComponent } from './components/views/tela-pokemon/pokemon/pokemo
     BodyComponent,
     InternalBoxComponent,
     PokemonComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -43,7 +44,8 @@ import { PokemonComponent } from './components/views/tela-pokemon/pokemon/pokemo
     FlexLayoutModule,
     MatFormFieldModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
