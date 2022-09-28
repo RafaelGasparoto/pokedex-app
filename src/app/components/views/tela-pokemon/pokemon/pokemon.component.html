@@ -1,4 +1,4 @@
-<div class="content" style="margin-top: 130px;"> 
+<div class="content"> 
  
       <mat-card  class="mat-elevation-z4" >
         <mat-card-header>
@@ -11,10 +11,9 @@
             <p style="text-align: left;">
                 N°{{pokemon.id}}
             </p>
-            <div style="display: flex;">
-              <span class="type-name" *ngFor="let type of pokemon.types" [ngStyle]="" >{{type.type.name}}</span>
+            <div style="display: flex;" >
+              <span  class="type-name" *ngFor="let type of pokemon.types" appGetColor>{{type.type.name}}</span>
             </div>
-            
           </div>
         </mat-card-content>
         <!-- <mat-card-actions>
@@ -22,8 +21,4 @@
           <button mat-button>SHARE</button>
         </mat-card-actions> -->
       </mat-card>
-  
-  <div style="text-align:center; margin: 50px;">
-    <button mat-raised-button color="primary">Carregar mais Pokémons</button>
-  </div>
 </div>

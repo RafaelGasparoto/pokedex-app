@@ -23,6 +23,7 @@ export class InternalBoxComponent implements OnInit {
    ['fighting', '#d56723'],  
    ['psychic', '#f366b9'],   
   ]);
+  
   constructor(private service: ObjetoService) { 
     this.pokemons = this.service.Data
   }
