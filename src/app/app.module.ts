@@ -20,7 +20,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatButtonModule } from '@angular/material/button';
 import { PokemonComponent } from './components/views/tela-pokemon/pokemon/pokemon.component';
-import { GetColorDirective } from './components/directive/get-color.directive';
 
 @NgModule({
   declarations: [
@@ -29,9 +28,7 @@ import { GetColorDirective } from './components/directive/get-color.directive';
     FooterComponent,
     BodyComponent,
     InternalBoxComponent,
-    PokemonComponent,
-    GetColorDirective,
-    
+    PokemonComponent,    
   ],
   imports: [
     BrowserModule,
