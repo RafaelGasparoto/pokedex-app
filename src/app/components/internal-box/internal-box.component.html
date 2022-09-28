@@ -5,7 +5,9 @@
         <mat-card-header>
           <mat-card-title>{{pokemon.name}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="{{pokemon.sprites.front_default}}">
+        <a routerLink="pokemon">
+          <img mat-card-image src="{{pokemon.sprites.front_default}}">
+        </a>
         <mat-card-content>
           <div style="text-align: center;">
             <p style="text-align: left;">
@@ -24,5 +26,8 @@
       </mat-card>
     </div>
   </div>
+  <div style="text-align:center; margin: 50px;">
+    <button mat-raised-button color="primary" (click)="add()">Carregar mais Pokémons</button>
+  </div>
+
 </div>
-<button style="margin: 50px;" (click)="add()">add</button>

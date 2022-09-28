@@ -18,6 +18,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { MatButtonModule } from '@angular/material/button';
+import { PokemonComponent } from './components/views/tela-pokemon/pokemon/pokemon.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +28,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     FooterComponent,
     BodyComponent,
     InternalBoxComponent,
+    PokemonComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCardModule,
     FlexLayoutModule,
     MatFormFieldModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,10 @@ mat-card-header{
   justify-content: center;
 }
 
+button{
+  justify-self: center;
+}
+
 .type-name {
   display: inline;
   border: 2px solid black;
