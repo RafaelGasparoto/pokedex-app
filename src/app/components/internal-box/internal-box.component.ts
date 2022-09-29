@@ -1,6 +1,7 @@
+import { PokemonPage } from './../service/pokemonPage.model';
+import { PokemonService } from './../service/pokemon.service';
 import { Pokemon } from './../../../../node_modules/pokenode-ts/dist/index.d';
-import { ObjetoService } from './objeto.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-internal-box',
@@ -8,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./internal-box.component.css'],
 })
 export class InternalBoxComponent implements OnInit {
-  pokemons!: Pokemon[]  
-  map1 = new Map<string, string>([
-    ['water', '#4592c4'],
+  pokemonPage: PokemonPage = {
+    count: 0,
+    next: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=12',
+    previous: '',
+    results: []
+  }
+  pokemons: Pokemon[] = []
+   colorType = new Map<string, string> ([
+  ['water', '#4592c4'],
    ['fire', '#fd7d24'],
    ['grass', '#9bcc50'],
    ['flying', '#3dc7ef'],
@@ -24,17 +31,29 @@ export class InternalBoxComponent implements OnInit {
    ['psychic', '#f366b9'],   
   ]);
   
-  constructor(private service: ObjetoService) { 
-    this.pokemons = this.service.Data
-  }
+  constructor(private service: PokemonService) { }
 
   ngOnInit(): void {
+    this.getPokemons()
+  }
+
+  getPokemons(): void{
+    this.service.readPokemonPage(this.pokemonPage.next).subscribe(e => {
+      this.pokemonPage = e
+    }).add(() =>{
+      this.pokemonPage.results.map(pokemon => {
+        this.service.readById(pokemon.name).subscribe(pokemon => {
+          this.pokemons.push(pokemon)
+          this.pokemons.sort((a, b) => a.id-b.id)
+        })
+      })
+    })
   }
 
   getColor(type: string): string{
-    return this.map1.get(type)!
+    return this.colorType.get(type)!
   }
+
   add(): void{
-    this.service.getDados()
   }
 }

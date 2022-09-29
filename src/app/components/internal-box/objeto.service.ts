@@ -1,5 +1,5 @@
 import { Pokemon } from './../../../../node_modules/pokenode-ts/dist/index.d';
-import { Injectable, OnInit } from '@angular/core';
+import { HostListener, Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Objeto } from './objeto.model';
@@ -21,11 +21,20 @@ export class ObjetoService {
   urlBase = 'https://pokeapi.co/api/v2/pokemon'
   
   constructor(private http: HttpClient, private snackbar: MatSnackBar) {
-    this.getDados()
-
+    
+    this.getDados();
   }
+  
+  clearPokemons(){
+    this.pokemons = [];
 
-  ngOnInit(){
+    this.listaPokemon = { 
+      count: 0,
+      next: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=12',
+      previous: '',
+      results: []
+    }
+    console.log(this.listaPokemon)
   }
 
   getDados(){
@@ -36,7 +45,6 @@ export class ObjetoService {
         this.getPokemons(poke['name']).subscribe(ob => {
           this.pokemons.push(ob)
           this.pokemons.sort((a, b) => a.id-b.id)
-
         })
       })
     })
