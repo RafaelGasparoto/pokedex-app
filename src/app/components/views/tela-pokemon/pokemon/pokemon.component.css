@@ -4,3 +4,8 @@
   border: solid 2px black;
   border-radius: 5px;
 }
+
+.layout{
+  justify-content: center; 
+  align-items: flex-end;
+}
