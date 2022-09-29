@@ -3,7 +3,7 @@
     <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let pokemon of pokemons" >
       <mat-card  class="mat-elevation-z4" >
         <mat-card-header>
-          <mat-card-title>{{pokemon.name}}</mat-card-title>
+          <mat-card-title>{{pokemon.name | titlecase}}</mat-card-title>
         </mat-card-header>
         <a routerLink="pokemon/{{pokemon.id}}">
           <img mat-card-image src="{{pokemon.sprites.front_default}}">
