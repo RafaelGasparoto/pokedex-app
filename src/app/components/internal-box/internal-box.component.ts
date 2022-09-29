@@ -18,7 +18,7 @@ export class InternalBoxComponent implements OnInit {
   }
   pokemons: Pokemon[] = []
    colorType = new Map<string, string> ([
-   ['water', '#4592c4'],
+    ['water', '#4592c4'],
    ['fire', '#fd7d24'],
    ['grass', '#9bcc50'],
    ['flying', '#3dc7ef'],
@@ -29,7 +29,7 @@ export class InternalBoxComponent implements OnInit {
    ['ground', '#ab9842'],
    ['fairy', '#fdb9e9'],
    ['fighting', '#d56723'],  
-   ['psychic', '#f366b9'],
+   ['psychic', '#f366b9'],   
   ]);
   
   constructor(private service: PokemonService) { }
@@ -56,7 +56,7 @@ export class InternalBoxComponent implements OnInit {
   getColor(type: string): string{
     return this.colorType.get(type)!
   }
-
+  
   addPokemons(): void{
     this.getPokemons()
   }

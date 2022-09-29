@@ -1,0 +1,6 @@
+.physical-status{
+  display: flex; 
+  justify-content: space-around;
+  border: solid 2px black;
+  border-radius: 5px;
+}

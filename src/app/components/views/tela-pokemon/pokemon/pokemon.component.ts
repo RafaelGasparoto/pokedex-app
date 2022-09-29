@@ -28,15 +28,20 @@ export class PokemonComponent implements OnInit {
   constructor(
     private service: PokemonService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
     ) { }
   
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')
     this.service.readById(id!).subscribe(pokemon => {
       this.pokemon = pokemon
+    }).add(()=>{
+      
+    this.pokemon.stats.forEach(e => {
+      console.log(e.stat.name)
+      console.log(e.base_stat)
     })
-    // this.pokemon.height
+    })
     // this.pokemon.weight
   }
 
