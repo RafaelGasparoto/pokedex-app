@@ -36,6 +36,8 @@ export class PokemonComponent implements OnInit {
     this.service.readById(id!).subscribe(pokemon => {
       this.pokemon = pokemon
     })
+    // this.pokemon.height
+    // this.pokemon.weight
   }
 
   getColor(type: string): string{

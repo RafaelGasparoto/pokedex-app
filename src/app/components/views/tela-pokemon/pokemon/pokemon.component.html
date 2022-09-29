@@ -4,12 +4,21 @@
           <mat-card-header >
             <mat-card-title>{{pokemon.name | titlecase}}</mat-card-title>
           </mat-card-header>
-        
-            <img mat-card-image src="{{pokemon.sprites.front_default}}">
           <mat-card-content>
-            <div style="text-align: center;">
-              <p style="text-align: left;">
-                  N°{{pokemon.id}}
+            <div class="pokemon-sprite">
+              <img mat-card-image src="{{pokemon.sprites.front_default}}">
+            </div>
+            <div class="pokemon-status" style="text-align: center;">
+              <p style="text-align: center;">
+                  N°{{pokemon.id}} {{pokemon.weight | number}} Kg {{pokemon.height}}
+              </p>
+              <p>
+                  
+              </p>
+              <p>
+              </p>
+              <p>
+                {{pokemon}}
               </p>
               <div style="display: flex;" *ngFor="let type of pokemon.types" >
                 <span  class="type-name" [ngStyle]="{backgroundColor: getColor(type.type.name)}">{{type.type.name}}</span>
