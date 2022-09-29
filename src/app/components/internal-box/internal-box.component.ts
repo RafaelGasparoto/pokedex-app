@@ -9,6 +9,7 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./internal-box.component.css'],
 })
 export class InternalBoxComponent implements OnInit {
+  loading: boolean = false
   pokemonPage: PokemonPage = {
     count: 0,
     next: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=12',
@@ -28,7 +29,7 @@ export class InternalBoxComponent implements OnInit {
    ['ground', '#ab9842'],
    ['fairy', '#fdb9e9'],
    ['fighting', '#d56723'],  
-   ['psychic', '#f366b9'],   
+   ['psychic', '#f366b9'],
   ]);
   
   constructor(private service: PokemonService) { }
@@ -38,6 +39,7 @@ export class InternalBoxComponent implements OnInit {
   }
 
   getPokemons(): void{
+    this.loading = true
     this.service.readPokemonPage(this.pokemonPage.next).subscribe(e => {
       this.pokemonPage = e
     }).add(() =>{
@@ -47,6 +49,7 @@ export class InternalBoxComponent implements OnInit {
           this.pokemons.sort((a, b) => a.id-b.id)
         })
       })
+      this.loading = false
     })
   }
 
@@ -54,7 +57,7 @@ export class InternalBoxComponent implements OnInit {
     return this.colorType.get(type)!
   }
 
-  add(): void{
+  addPokemons(): void{
     this.getPokemons()
   }
 }

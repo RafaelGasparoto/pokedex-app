@@ -26,7 +26,10 @@
       </mat-card>
     </div>
   </div>
+  <div style="text-align: -webkit-center; margin: 50px;">
+    <mat-spinner style="justify-content: center" *ngIf="loading" ></mat-spinner> 
+  </div>
   <div style="text-align:center; margin: 50px;">
-    <button mat-raised-button color="primary" (click)="add()">Carregar mais Pokémons</button>
+    <button mat-raised-button color="primary" (click)="addPokemons()">Carregar mais Pokémons</button>
   </div>
 </div>

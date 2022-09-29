@@ -1,5 +1,5 @@
+import { PokemonService } from './../../../service/pokemon.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ObjetoService } from './../../../internal-box/objeto.service';
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from 'pokenode-ts';
 
@@ -10,7 +10,7 @@ import { Pokemon } from 'pokenode-ts';
 })
 export class PokemonComponent implements OnInit {
   pokemon!: Pokemon
-  map1 = new Map<string, string>([
+  colorType = new Map<string, string>([
     ['water', '#4592c4'],
    ['fire', '#fd7d24'],
    ['grass', '#9bcc50'],
@@ -26,7 +26,7 @@ export class PokemonComponent implements OnInit {
   ]);
   
   constructor(
-    private service: ObjetoService,
+    private service: PokemonService,
     private router: Router,
     private route: ActivatedRoute
     ) { }
@@ -39,7 +39,7 @@ export class PokemonComponent implements OnInit {
   }
 
   getColor(type: string): string{
-    return this.map1.get(type)!
+    return this.colorType.get(type)!
   }
 
 }
