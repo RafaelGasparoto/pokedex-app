@@ -21,6 +21,7 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatButtonModule } from '@angular/material/button';
 import { PokemonComponent } from './components/views/tela-pokemon/pokemon/pokemon.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   providers: [ { provide: LOCALE_ID, useValue: 'pt-BR' } ],
   bootstrap: [AppComponent]
