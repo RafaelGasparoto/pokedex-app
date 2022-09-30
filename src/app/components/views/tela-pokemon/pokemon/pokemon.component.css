@@ -9,3 +9,8 @@
   justify-content: center; 
   align-items: flex-end;
 }
+
+.status {
+  display: flex; 
+  padding-bottom: 0;
+}

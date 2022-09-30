@@ -10,6 +10,14 @@ import { Pokemon } from 'pokenode-ts';
 })
 export class PokemonComponent implements OnInit {
   pokemon!: Pokemon
+  colorStats = new Map<string, string>([
+    ['hp', '#e77a7a'],
+    ['attack', '#ff9e4f'],
+    ['defense', '#ffff00'],
+    ['special-attack', '#adaeff'],
+    ['special-defense', '#00ff22'],
+    ['speed', '#00ccff']
+  ])
   colorType = new Map<string, string>([
     ['water', '#4592c4'],
    ['fire', '#fd7d24'],
@@ -36,17 +44,18 @@ export class PokemonComponent implements OnInit {
     this.service.readById(id!).subscribe(pokemon => {
       this.pokemon = pokemon
     }).add(()=>{
-      
-    this.pokemon.stats.forEach(e => {
-      console.log(e.stat.name)
-      console.log(e.base_stat)
+      this.pokemon.stats.forEach(e => {
+        console.log(e.stat.name)
+        console.log(e.base_stat)
     })
     })
     // this.pokemon.weight
   }
 
-  getColor(type: string): string{
+  getColorType(type: string): string{
     return this.colorType.get(type)!
   }
-
+  getColorStats(stats: string): string{
+    return this.colorStats.get(stats)!
+  }
 }
