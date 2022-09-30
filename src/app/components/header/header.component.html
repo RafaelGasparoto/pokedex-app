@@ -15,14 +15,21 @@
     </a>
   </mat-toolbar-row>
 
-  <mat-toolbar-row class="row-toolbar">
-    <div style="display:flex; width: 100%; justify-content: space-evenly">
-      <div *ngFor="let i of [1, 2,3]" style="display:flex; border: 2px solid black;">
-        <a routerLink="pokemon">
-          <p>{{i}}</p>
-        </a>
+  <mat-toolbar-row class="row-toolbar" >
+      <div style="width: 180px; text-align: center; margin-right: 30px;">
+        Ultimo Selecionado
       </div>
-    </div>
+      <div style="width: 180px;text-align: center; margin-right: 30px;">
+        <div style=" display: inline;">
+            <input matInput type="text">
+            <button matSuffix mat-icon-button>
+              <mat-icon>search</mat-icon>
+            </button>
+        </div>
+      </div>
+      <div style=" width: 180px; text-align: center;">
+        Orgnizar
+      </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -32,3 +39,18 @@
     <img class="logo" src="../../../assets/images/logo.png" alt="logo">
   </a>
 </span> -->
+
+<!-- <div style="width: 180px; text-align: center; margin-right: 30px;">
+  Ultimo Selecionado
+</div>
+<div style="width: 180px;text-align: center; margin-right: 30px;">
+  <div style=" display: inline;">
+      <input matInput type="text">
+      <button matSuffix mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+  </div>
+</div>
+<div style=" width: 180px; text-align: center;">
+  Orgnizar
+</div> -->
