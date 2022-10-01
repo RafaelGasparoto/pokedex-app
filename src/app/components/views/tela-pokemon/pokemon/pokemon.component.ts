@@ -9,6 +9,8 @@ import { Pokemon } from 'pokenode-ts';
   styleUrls: ['./pokemon.component.css']
 })
 export class PokemonComponent implements OnInit {
+  loading = false
+  loa = true
   pokemon!: Pokemon
   colorStats = new Map<string, string>([
     ['hp', '#e77a7a'],
@@ -20,17 +22,17 @@ export class PokemonComponent implements OnInit {
   ])
   colorType = new Map<string, string>([
     ['water', '#4592c4'],
-   ['fire', '#fd7d24'],
-   ['grass', '#9bcc50'],
-   ['flying', '#3dc7ef'],
-   ['poison', '#b97fc9'],
-   ['bug', '#729f3f'],
-   ['normal', '#a4acaf'],
-   ['electric', '#eed535'],
-   ['ground', '#ab9842'],
-   ['fairy', '#fdb9e9'],
-   ['fighting', '#d56723'],  
-   ['psychic', '#f366b9'],   
+    ['fire', '#fd7d24'],
+    ['grass', '#9bcc50'],
+    ['flying', '#3dc7ef'],
+    ['poison', '#b97fc9'],
+    ['bug', '#729f3f'],
+    ['normal', '#a4acaf'],
+    ['electric', '#eed535'],
+    ['ground', '#ab9842'],
+    ['fairy', '#fdb9e9'],
+    ['fighting', '#d56723'],  
+    ['psychic', '#f366b9'],   
   ]);
   
   constructor(
@@ -44,12 +46,11 @@ export class PokemonComponent implements OnInit {
     this.service.readById(id!).subscribe(pokemon => {
       this.pokemon = pokemon
     }).add(()=>{
-      this.pokemon.stats.forEach(e => {
-        console.log(e.stat.name)
-        console.log(e.base_stat)
+      this.loa = false
+      this.loading = true
     })
-    })
-    // this.pokemon.weight
+
+    console.log(this.loading)
   }
 
   getColorType(type: string): string{

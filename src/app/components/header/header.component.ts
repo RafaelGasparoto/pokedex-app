@@ -1,28 +1,35 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PokemonService } from './../service/pokemon.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   pokemon = ''
-
+  url = ''
   constructor(
     private service: PokemonService,
-    private route: Router  
+    private route: Router,
+    private router: ActivatedRoute
   ) { }
+
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
 
   ngOnInit(): void {
   }
   
   getPokemon(pokemon: string): void{
-    console.log(pokemon)
+    this.url = `pokemon/${pokemon}`
 
-    const url = `pokemon/${pokemon}`
-    this.route.navigate([url])
+    let currentUrl = this.url
+    this.route.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+    this.route.navigate([currentUrl]);
+    });
   }
 
 }
