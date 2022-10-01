@@ -9,7 +9,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   pokemon = ''
-  url = ''
   constructor(
     private service: PokemonService,
     private route: Router,
@@ -24,12 +23,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   
   getPokemon(pokemon: string): void{
-    this.url = `pokemon/${pokemon}`
-
-    let currentUrl = this.url
+    const currentUrl = `pokemon/${pokemon}`
+    this.pokemon = ''
     this.route.navigateByUrl('/', {skipLocationChange: true}).then(() => {
     this.route.navigate([currentUrl]);
     });
+    
   }
 
 }
