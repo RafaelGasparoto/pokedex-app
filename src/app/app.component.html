@@ -1,2 +1,6 @@
 <app-header ></app-header>
 <app-body></app-body>
+<div *ngIf="isShow" class="fixedButton">
+  <div class="roundedFixedBtn"><mat-icon (click)="gotoTop()">keyboard_arrow_up</mat-icon ></div>
+</div>
+ 
