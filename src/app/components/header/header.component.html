@@ -11,8 +11,8 @@
     </div>
     <div style="width: 180px;text-align: center; margin-right: 30px;">
       <div style=" display: inline;">
-        <input matInput type="text" [(ngModel)]="pokemon">
-        <button matSuffix mat-icon-button mat-button (click)="getPokemon(pokemon)">
+        <input matInput type="text" (keyup.enter)="getPokemon(pokemon)" [(ngModel)]="pokemon">
+        <button matSuffix mat-icon-button mat-button  (click)="getPokemon(pokemon)">
           <mat-icon>search</mat-icon>
         </button>
       </div>

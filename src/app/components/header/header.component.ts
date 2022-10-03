@@ -1,6 +1,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { PokemonService } from './../service/pokemon.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 
 @Component({
   selector: 'app-header',
@@ -23,12 +24,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   
   getPokemon(pokemon: string): void{
+    if(pokemon == '')
+      return
     const currentUrl = `pokemon/${pokemon}`
     this.pokemon = ''
     this.route.navigateByUrl('/', {skipLocationChange: true}).then(() => {
     this.route.navigate([currentUrl]);
     });
-    
   }
 
 }
