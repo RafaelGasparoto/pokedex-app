@@ -1,6 +1,7 @@
+import { HeaderComponent } from './../../../header/header.component';
 import { PokemonService } from './../../../service/pokemon.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Pokemon } from 'pokenode-ts';
 
 @Component({
@@ -9,6 +10,7 @@ import { Pokemon } from 'pokenode-ts';
   styleUrls: ['./pokemon.component.css']
 })
 export class PokemonComponent implements OnInit {
+
   loading = false
   loa = true
   pokemon!: Pokemon
@@ -48,10 +50,11 @@ export class PokemonComponent implements OnInit {
     }).add(()=>{
       this.loa = false
       this.loading = true
+      this.service.ultimoSelecionado = id!
+      console.log(this.service.ultimoSelecionado)
     })
 
-    console.log(this.loading)
-  }
+    }
 
   getColorType(type: string): string{
     return this.colorType.get(type)!

@@ -51,7 +51,7 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     FormsModule
   ],
-  providers: [ { provide: LOCALE_ID, useValue: 'pt-BR' } ],
+  providers: [ { provide: LOCALE_ID, useValue: 'pt-BR' }, PokemonComponent, HeaderComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

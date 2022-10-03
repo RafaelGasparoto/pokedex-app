@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class PokemonService {
   urlBase = 'https://pokeapi.co/api/v2/pokemon'
+  ultimoSelecionado = ''
   
   constructor(private http: HttpClient, private snackbar: MatSnackBar, private route: Router) {
   }
@@ -35,7 +36,7 @@ export class PokemonService {
 
   showMessage(msg: string, isError: boolean = false): void {
     this.snackbar.open(msg, '', {
-      duration: 4000,
+      duration: 3000,
       verticalPosition: 'top',
       horizontalPosition: 'right',
       panelClass: isError ? ['msg-error'] : ['msg-sucess']

@@ -1,7 +1,8 @@
+import { HeaderComponent } from './../header/header.component';
 import { PokemonPage } from './../service/pokemonPage.model';
 import { PokemonService } from './../service/pokemon.service';
 import { Pokemon } from './../../../../node_modules/pokenode-ts/dist/index.d';
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-internal-box',
