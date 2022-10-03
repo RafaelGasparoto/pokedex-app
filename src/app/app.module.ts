@@ -22,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { PokemonComponent } from './components/views/tela-pokemon/pokemon/pokemon.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { FormsModule } from '@angular/forms';
     MatSidenavModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   providers: [ { provide: LOCALE_ID, useValue: 'pt-BR' }, PokemonComponent, HeaderComponent ],
   bootstrap: [AppComponent]

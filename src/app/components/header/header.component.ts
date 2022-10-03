@@ -1,4 +1,3 @@
-import { PokemonComponent } from './../views/tela-pokemon/pokemon/pokemon.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PokemonService } from './../service/pokemon.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,6 +11,12 @@ import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 export class HeaderComponent implements OnInit {
   pokemon = ''
   ultimoPokemon = ''
+  selectedValue = ''
+  types = [
+    {value: 'Ordem Tipo'},
+    {value: 'Ordem numeral'},
+    {value: 'Ordem Alfabética'},
+  ]
   constructor(
     private service: PokemonService,
     private route: Router,

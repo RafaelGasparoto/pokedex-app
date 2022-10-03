@@ -4,7 +4,6 @@
       <img class="logo" src="../../../assets/images/logo.png" alt="logo">
     </a>
   </mat-toolbar-row>
-
   <mat-toolbar-row class="row-toolbar">
     <div style="width: 180px; margin-right: 30px;">
       <button mat-flat-button (click)="getUltimoSelecionado()" style="cursor: pointer; width: 100%;">Ultimo Selecionado</button>
@@ -18,7 +17,15 @@
       </div>
     </div>
     <div style=" width: 180px;">
-      <button mat-flat-button style="width: 100%;">Organizar</button>
+      <mat-form-field>
+        <mat-label>Organizar</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="types">
+          <mat-option *ngFor="let type of types" [value]="type.value">
+            {{type.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- <button mat-flat-button style="width: 100%;">Organizar</button> -->
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
