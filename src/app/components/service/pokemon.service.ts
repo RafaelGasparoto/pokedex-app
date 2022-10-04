@@ -12,10 +12,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class PokemonService {
   urlBase = 'https://pokeapi.co/api/v2/pokemon'
   ultimoSelecionado = ''
- 
+  type: any
   @Output() newItemEvent = new EventEmitter<string>();
 
-  addNewItem(value: string) {
+  addNewItem(value: any) {
     this.newItemEvent.emit(value);
   }
 

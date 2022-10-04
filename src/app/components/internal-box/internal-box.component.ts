@@ -1,3 +1,4 @@
+import { DialogComponent } from './../ordenacao/dialog/dialog.component';
 import { HeaderComponent } from './../header/header.component';
 import { PokemonPage } from './../service/pokemonPage.model';
 import { PokemonService } from './../service/pokemon.service';
@@ -38,8 +39,10 @@ export class InternalBoxComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.newItemEvent.subscribe(v=>{
-      this.ordenacao(v)
-      this.ordem = v
+      if(v == 'type')
+        console.log(this.service.type)
+      // this.ordenacao(v)
+      // this.ordem = v
     })
 
     this.getPokemons()
