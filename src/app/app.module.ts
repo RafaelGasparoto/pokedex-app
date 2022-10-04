@@ -21,8 +21,12 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatButtonModule } from '@angular/material/button';
 import { PokemonComponent } from './components/views/tela-pokemon/pokemon/pokemon.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from "@angular/material/select";
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './components/ordenacao/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,8 @@ import { MatSelectModule } from "@angular/material/select";
     FooterComponent,
     BodyComponent,
     InternalBoxComponent,
-    PokemonComponent,    
+    PokemonComponent,
+    DialogComponent,    
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,11 @@ import { MatSelectModule } from "@angular/material/select";
     MatProgressSpinnerModule,
     MatIconModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    MatDialogModule 
   ],
   providers: [ { provide: LOCALE_ID, useValue: 'pt-BR' }, PokemonComponent, HeaderComponent ],
   bootstrap: [AppComponent]
