@@ -1,8 +1,7 @@
-import { HeaderComponent } from './../header/header.component';
 import { PokemonPage } from './../service/pokemonPage.model';
 import { PokemonService } from './../service/pokemon.service';
 import { Pokemon } from './../../../../node_modules/pokenode-ts/dist/index.d';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-internal-box',
@@ -17,6 +16,7 @@ export class InternalBoxComponent implements OnInit {
     previous: '',
     results: []
   }
+  @Input() ordernacao: string = ''
   pokemons: Pokemon[] = []
   colorType = new Map<string, string> ([
     ['water', '#4592c4'],
