@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { PokemonPage } from './pokemonPage.model';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Pokemon } from 'pokenode-ts';
 import { catchError, EMPTY, map, Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,7 +12,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class PokemonService {
   urlBase = 'https://pokeapi.co/api/v2/pokemon'
   ultimoSelecionado = ''
-  
+ 
+  @Output() newItemEvent = new EventEmitter<string>();
+
+  addNewItem(value: string) {
+    this.newItemEvent.emit(value);
+  }
+
   constructor(private http: HttpClient, private snackbar: MatSnackBar, private route: Router) {
   }
 
@@ -42,4 +48,5 @@ export class PokemonService {
       panelClass: isError ? ['msg-error'] : ['msg-sucess']
     })
   }
+
 }

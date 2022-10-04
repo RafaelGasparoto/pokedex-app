@@ -18,6 +18,7 @@ export class InternalBoxComponent implements OnInit {
     results: []
   }
   pokemons: Pokemon[] = []
+  ordem: string = 'Ordem Crescente'
   colorType = new Map<string, string> ([
     ['water', '#4592c4'],
     ['fire', '#fd7d24'],
@@ -36,7 +37,23 @@ export class InternalBoxComponent implements OnInit {
   constructor(private service: PokemonService) { }
 
   ngOnInit(): void {
+    this.service.newItemEvent.subscribe(v=>{
+      this.ordenacao(v)
+      this.ordem = v
+    })
+
     this.getPokemons()
+  }
+
+  ordenacao(v: string): void{
+    if(v == 'Ordem Crescente')
+      this.pokemons.sort((a, b) => a.id-b.id)
+    else if (v == 'Ordem Decrescente')
+      this.pokemons.sort((a, b) => b.id-a.id)
+    else if (v == 'Ordem Tipo')
+      console.log()
+    else if (v == 'Ordem Alfabética')
+      this.pokemons.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   getPokemons(): void{
@@ -47,13 +64,13 @@ export class InternalBoxComponent implements OnInit {
       this.pokemonPage.results.map(pokemon => {
         this.service.readById(pokemon.name).subscribe(pokemon => {
           this.pokemons.push(pokemon)
-          this.pokemons.sort((a, b) => a.id-b.id)
+          this.ordenacao(this.ordem)
         })
       })
       this.loading = false
     })
   }
-
+  
   getColor(type: string): string{
     return this.colorType.get(type)!
   }

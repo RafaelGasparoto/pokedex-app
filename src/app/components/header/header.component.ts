@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { PokemonService } from './../service/pokemon.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 
 @Component({
@@ -12,9 +12,11 @@ export class HeaderComponent implements OnInit {
   pokemon = ''
   ultimoPokemon = ''
   selectedValue = ''
+
   types = [
     {value: 'Ordem Tipo'},
-    {value: 'Ordem numeral'},
+    {value: 'Ordem Crescente'},
+    {value: 'Ordem Decrescente'},
     {value: 'Ordem Alfabética'},
   ]
   constructor(
@@ -25,7 +27,11 @@ export class HeaderComponent implements OnInit {
   
   ngOnInit(): void {
   } 
-  
+
+  ordenar(valor: any): void {
+    this.service.addNewItem(valor.value)
+  }
+
   getUltimoSelecionado(){
     if(this.service.ultimoSelecionado == '')
       this.service.showMessage('Nenhum Pokemon foi selecionado ainda!!!', true)

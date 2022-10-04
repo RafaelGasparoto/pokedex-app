@@ -19,7 +19,7 @@
     <div style=" width: 180px;">
       <mat-form-field>
         <mat-label>Organizar</mat-label>
-        <mat-select [(ngModel)]="selectedValue" name="types">
+        <mat-select [(ngModel)]="selectedValue" name="types" (selectionChange)="ordenar($event)">
           <mat-option *ngFor="let type of types" [value]="type.value">
             {{type.value}}
           </mat-option>
