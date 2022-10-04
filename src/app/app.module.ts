@@ -23,7 +23,6 @@ import { PokemonComponent } from './components/views/tela-pokemon/pokemon/pokemo
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from "@angular/material/select";
-import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -54,7 +53,7 @@ import { DatePipe } from '@angular/common';
     FormsModule,
     MatSelectModule
   ],
-  providers: [ { provide: LOCALE_ID, useValue: 'pt-BR' }, PokemonComponent, HeaderComponent, InternalBoxComponent, DatePipe ],
+  providers: [ { provide: LOCALE_ID, useValue: 'pt-BR' }, PokemonComponent, HeaderComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,3 @@
-import { InternalBoxComponent } from './../internal-box/internal-box.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PokemonService } from './../service/pokemon.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,16 +21,10 @@ export class HeaderComponent implements OnInit {
     private service: PokemonService,
     private route: Router,
     private router: ActivatedRoute,
-    private order: InternalBoxComponent
   ) { }
   
   ngOnInit(): void {
-  }
-  
-  orderPokemons(): void {
-     this.order.pokemons.sort()
-     console.log(this.order.pokemons[0])
-  }
+  } 
   
   getUltimoSelecionado(){
     if(this.service.ultimoSelecionado == '')
