@@ -1,9 +1,12 @@
 .checkbox{
   margin: 5px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
 }
 
 .type{
-  margin: 3px;
+  margin: 6px;
 }
 
 .button {

@@ -1,11 +1,7 @@
-import { DialogComponent } from './../ordenacao/dialog/dialog.component';
-import { HeaderComponent } from './../header/header.component';
 import { PokemonPage } from './../service/pokemonPage.model';
 import { PokemonService } from './../service/pokemon.service';
 import { Pokemon } from './../../../../node_modules/pokenode-ts/dist/index.d';
 import { Component, OnInit } from '@angular/core';
-import { throwMatDuplicatedDrawerError } from '@angular/material/sidenav';
-import { isEmpty } from 'rxjs';
 
 @Component({
   selector: 'app-internal-box',
@@ -36,7 +32,6 @@ export class InternalBoxComponent implements OnInit {
     ['fighting', '#d56723'],  
     ['psychic', '#f366b9'],   
   ]);
-  
   constructor(private service: PokemonService) { }
 
   ngOnInit(): void {
