@@ -4,6 +4,8 @@ import { PokemonPage } from './../service/pokemonPage.model';
 import { PokemonService } from './../service/pokemon.service';
 import { Pokemon } from './../../../../node_modules/pokenode-ts/dist/index.d';
 import { Component, OnInit } from '@angular/core';
+import { throwMatDuplicatedDrawerError } from '@angular/material/sidenav';
+import { isEmpty } from 'rxjs';
 
 @Component({
   selector: 'app-internal-box',
@@ -12,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InternalBoxComponent implements OnInit {
   loading: boolean = false
+  ordem: string = 'Ordem Crescente'
   pokemonPage: PokemonPage = {
     count: 0,
     next: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=12',
@@ -19,7 +22,6 @@ export class InternalBoxComponent implements OnInit {
     results: []
   }
   pokemons: Pokemon[] = []
-  ordem: string = 'Ordem Crescente'
   colorType = new Map<string, string> ([
     ['water', '#4592c4'],
     ['fire', '#fd7d24'],
@@ -39,27 +41,36 @@ export class InternalBoxComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.newItemEvent.subscribe(v=>{
-      if(v == 'type')
-        console.log(this.service.type)
-      // this.ordenacao(v)
-      // this.ordem = v
+        this.ordenacao(v)
+        this.ordem = v
     })
 
-    this.getPokemons()
+    this.getPokemons(this.ordem)
   }
 
-  ordenacao(v: string): void{
+  async ordenacao(v: string): Promise<void>{
     if(v == 'Ordem Crescente')
       this.pokemons.sort((a, b) => a.id-b.id)
     else if (v == 'Ordem Decrescente')
       this.pokemons.sort((a, b) => b.id-a.id)
-    else if (v == 'Ordem Tipo')
-      console.log()
     else if (v == 'Ordem Alfabética')
       this.pokemons.sort((a, b) => a.name.localeCompare(b.name));
+    else
+      {
+        for (const type of this.service.type) {
+          for(let index = 0; index < this.pokemons.length; index++){
+            if(type.type == this.pokemons[index].types[0].type.name && type.selected == false){
+              console.log(type.type)
+              this.pokemons.splice(index, 1)
+              index--
+            }
+          
+          }
+        }
+      }
   }
 
-  getPokemons(): void{
+  getPokemons(ordem: string): void{
     this.loading = true
     this.service.readPokemonPage(this.pokemonPage.next).subscribe(e => {
       this.pokemonPage = e
@@ -67,7 +78,7 @@ export class InternalBoxComponent implements OnInit {
       this.pokemonPage.results.map(pokemon => {
         this.service.readById(pokemon.name).subscribe(pokemon => {
           this.pokemons.push(pokemon)
-          this.ordenacao(this.ordem)
+          this.ordenacao(ordem)
         })
       })
       this.loading = false
@@ -79,6 +90,6 @@ export class InternalBoxComponent implements OnInit {
   }
   
   addPokemons(): void{
-    this.getPokemons()
+    this.getPokemons(this.ordem)
   }
 }

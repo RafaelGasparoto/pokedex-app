@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    
     });
   }
 
@@ -52,7 +52,6 @@ export class HeaderComponent implements OnInit {
       this.openDialog()
     else
       this.service.addNewItem(valor.value)
-
   }
   
   getUltimoSelecionado(){
